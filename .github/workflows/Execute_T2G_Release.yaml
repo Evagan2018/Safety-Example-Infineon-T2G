@@ -50,4 +50,6 @@ jobs:
 
     - name: Install packs
       run: |
+        cpackget --help
         cpackget list
+        cpackget add Infineon::T2G-B-H_DFP@^1.2.0
