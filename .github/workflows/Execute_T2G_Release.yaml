@@ -48,16 +48,10 @@ jobs:
         key: T2G-Kit
         path: /home/runner/.cache/arm/packs/.Download
 
-    - name: Runner Directory diagnosis
-      run: |
-        pwd      
-        tree -d -L 2
-        echo ${{ github.workspace }}
-
     - name: Add the Infineon.T2G-B-H_DFP
       run: |
         cd ~
-        cpackget add --quiet ./PACK/.Download/Infineon.T2G-B-H_DFP.1.2.1.pack
+        cpackget add -a ./PACK/.Download/Infineon.T2G-B-H_DFP.1.2.1.pack
         cpackget list
 
     - name: Download Build Artifact
