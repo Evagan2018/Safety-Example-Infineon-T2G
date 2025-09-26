@@ -58,4 +58,6 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: T2G-Kit@Release
-        path: ./App/out
+        path: |
+          ./App/out
+          ./App/.cmsis
