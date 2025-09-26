@@ -54,15 +54,11 @@ jobs:
         tree -d -L 2
         echo ${{ github.workspace }}
 
-    - name: Set and show the CMSIS_PACK_ROOT directory
+    - name: Add the Infineon.T2G-B-H_DFP
       run: |
-        echo "first test"
         cd ~
-        pwd
-        tree -d -L 2
-        # cpackget init --pack-root /PACK/
-        # cpackget --help
-        cpackget add ./PACK/.Download/Infineon.T2G-B-H_DFP.1.2.1.pack
+        cpackget add --quiet ./PACK/.Download/Infineon.T2G-B-H_DFP.1.2.1.pack
+        cpackget list
 
     - name: Download Build Artifact
       uses: dawidd6/action-download-artifact@v2
