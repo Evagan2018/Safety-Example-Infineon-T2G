@@ -63,9 +63,11 @@ jobs:
 
     - name: Copy .cmsis folder and show artifacts
       run: |
+        tree -a ./App/.cmsis/
+        ls -a ./App/.cmsis/
         cp -r ./App/.cmsis/ ./artifact
         echo "Running tests with artifact contents..."
-        ls -R ./artifact
+        ls -R -a ./artifact
 
     - name: Flash-Download-Test for T2G-Kit@Release
       working-directory: ./artifact
