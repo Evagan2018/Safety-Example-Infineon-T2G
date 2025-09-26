@@ -64,5 +64,11 @@ jobs:
       with:
         name: T2G-Kit@Release
         path: |
-          App/out/
-          App/.cmsis/
+          ./App/out/
+
+    - name: Upload dbgconf for context T2G.Release+T2G-Kit
+      uses: actions/upload-artifact@v4
+      with:
+        name: T2G-Kit@Release
+        path: |
+          ./App/.cmsis/
