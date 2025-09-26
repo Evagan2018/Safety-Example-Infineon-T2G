@@ -59,10 +59,11 @@ jobs:
         echo "first test"
         cd ~
         pwd
-        echo "second test"
-        cd ./../../../
-        pwd        
-        # cpackget init --pack-root ~/PACK/
+        tree -d -L 2
+        # echo "second test"
+        # cd ./../../../
+        # pwd        
+        # cpackget init --pack-root /PACK/
         # cpackget --help
 
     - name: Download Build Artifact
