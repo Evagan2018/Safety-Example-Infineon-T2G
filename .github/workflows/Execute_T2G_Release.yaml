@@ -60,11 +60,8 @@ jobs:
         cd ~
         pwd
         tree -d -L 2
-        # echo "second test"
-        # cd ./../../../
-        # pwd        
-        # cpackget init --pack-root /PACK/
-        # cpackget --help
+        cpackget init --pack-root /PACK/
+        cpackget --help
 
     - name: Download Build Artifact
       uses: dawidd6/action-download-artifact@v2
