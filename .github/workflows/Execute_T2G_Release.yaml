@@ -66,3 +66,7 @@ jobs:
         echo "Running tests with artifact contents..."
         ls -R ./artifact
 
+    - name: Flash-Download-Test for T2G-Kit@Release
+      working-directory: ./artifact
+      run: | 
+         python3 -m pyocd load --probe cmsisdap: --cbuild-run T2G+T2G-Kit.cbuild-run.yml
