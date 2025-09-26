@@ -61,8 +61,9 @@ jobs:
         name: T2G-Kit@Release
         path: ./artifact
 
-    - name: Show artifacts
+    - name: Copy .cmsis folder and show artifacts
       run: |
+        cp -r ./App/.cmsis/ ./artifact
         echo "Running tests with artifact contents..."
         ls -R ./artifact
 
