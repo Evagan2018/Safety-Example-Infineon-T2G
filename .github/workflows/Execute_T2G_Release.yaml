@@ -51,7 +51,7 @@ jobs:
     - name: Add the Infineon.T2G-B-H_DFP
       run: |
         cd ~
-        cpackget add -a ./PACK/.Download/Infineon.T2G-B-H_DFP.1.2.1.pack
+        cpackget add -a -F ./PACK/.Download/Infineon.T2G-B-H_DFP.1.2.1.pack
         cpackget list
 
     - name: Download Build Artifact
