@@ -56,7 +56,7 @@ jobs:
 
     - name: Set and show the CMSIS_PACK_ROOT directory
       run: |
-        cpackget init ~/PACK/
+        cpackget init --pack-root ~/PACK/
         cpackget --help
 
     - name: Download Build Artifact
