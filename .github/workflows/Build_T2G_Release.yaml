@@ -54,10 +54,15 @@ jobs:
       run: |
         cbuild T2G.csolution.yml --active T2G-Kit@Release --packs
 
+    - name: Diagnosis
+      working-directory: ./App/.cmsis/
+      run: |
+        tree
+
     - name: Upload output for context T2G.Release+T2G-Kit
       uses: actions/upload-artifact@v4
       with:
         name: T2G-Kit@Release
         path: |
           App/out/
-          !App/.cmsis/
+          App/.cmsis/
