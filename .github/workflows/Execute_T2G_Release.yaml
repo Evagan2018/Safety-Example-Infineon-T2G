@@ -54,8 +54,9 @@ jobs:
         tree -d -L 2
         echo ${{ github.workspace }}
 
-    - name: Show pack init directory
+    - name: Set and show the CMSIS_PACK_ROOT directory
       run: |
+        cpackget init ~/PACK/
         cpackget --help
 
     - name: Download Build Artifact
