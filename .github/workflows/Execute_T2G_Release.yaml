@@ -59,17 +59,15 @@ jobs:
       with:
         workflow: Build_T2G_Release.yaml
         name: T2G-Kit@Release
-        path: ./artifact
+        path: ./artifact/out
 
     - name: Copy .cmsis folder and show artifacts
       run: |
-        tree -a ./App/.cmsis/
-        ls -a ./App/.cmsis/
         cp -r ./App/.cmsis/ ./artifact
         echo "Running tests with artifact contents..."
         ls -R -a ./artifact
 
     - name: Flash-Download-Test for T2G-Kit@Release
-      working-directory: ./artifact
+      working-directory: ./artifact/out
       run: | 
          python3 -m pyocd load --probe cmsisdap: --cbuild-run T2G+T2G-Kit.cbuild-run.yml
