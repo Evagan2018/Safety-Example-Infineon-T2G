@@ -3,24 +3,74 @@
 The CMSIS-Toolbox implements and [Run and Debug Configuration](https://open-cmsis-pack.github.io/cmsis-toolbox/build-overview/#run-and-debug-configuration) for command line usage with pyOCD. pyOCD is a debug connector used in [Keil Studio] that offers also command-line operation for Continuous Integration (CI).
 
 This section explains how to setup a Linux box that runs a GitHub self-hosted runner for programming and execution of an application. The [build workflow](../.github/workflows/Build_T2G_Release.yaml) is executed on a GitHub hosted runner that stores the build output as an artifact.
+The [run workflow](../.github/workflows/Run_T2G_Release.yaml) is executed on a self-hosted runner hosted on a Raspberry Pi.
 
 ![CI and HiL Test](CI_HIL.png "CI and HiL Test")
 
+## Setup of the Raspberry Pi hardware
+
+The following parts are required for setting up the Raspberry Pi hardware:
+
+- MicroSD card, 32GB or larger, Class 10 recommended
+- MicroSD card reader (for flashing the OS)
+- Power supply [official Raspberry Pi PSU recommended](https://www.raspberrypi.com/products/27w-power-supply/)
+- Keyboard and mouse for the first setup
+- Ethernet cable
+- Optional: HDMI cable and monitor for the non-headles OS
+
 ## Setup of a Linux System
 
-This example uses an Raspberry Pi5 with Ubuntu ARM.
+The following steps describes how to install an Ubuntu ARM OS on the Raspberry Pi 5
 
-The following development tools and software packs are installed:
+### Prepare the Operating System
+- Download the **Raspberry Pi Imager** (official tool): Available for Windows, macOS, Ubuntu: https://www.raspberrypi.com/software/
+- Connect the reader to your PC and insert the microSD card
+- Launch the tool and do the following selections
+  - Device: **Raspberry 5**
+  - Operating System: Other general-purpose OS &rarr; Ubuntu &rarr; **Ubuntu Desktop 24.04.3 LTS (64-bit)**
+  - Storage: Uncheck the box 'Exclude System Drivers' and select the: **Mass Storage Device**
+- Press Next &rarr; Press Yes for the warning &rarr; Writting to the microSD card starts.
 
-- [CMSIS-Toolbox](https://open-cmsis-pack.github.io/cmsis-toolbox) for download of Software packs.
-- [pyOCD](https://pyocd.io/) for program download and execution.
-- [pack: Infineon::T2G-B-H_DFP](https://www.keil.arm.com/packs/t2g-b-h_dfp-infineon) for access to flash programming algorithms.
+### Insert the microSD and Connect Peripherals
+- Insert the repared microSD card into the Pi
+- Connect: Keyboard, mouse, monitor, network cable, and finaly the power-supply
 
-### Install CMSIS-Toolbox
+### First Boot & Configuration
+- On first boot, the OS will:
+  - Expand the file system automatically
+  - Launch the setup wizard to configure: locale, time zone, keyboard layout, a.o.
+- You’ll land on the desktop environment
+
+### Update and Upgrade
+Open a terminal and run:
+```
+     sudo apt update
+     sudo apt full-upgrade -y
+```
+This ensures your Pi has the latest software and security updates.
+
+
+### Optional configuration
+To enable SSH, change the hostname, a.o.
+```
+     sudo raspi-config
+```
+
+### Remote Access
+- Open a terminal from your pc and run:
+```
+     ssh pi@<raspberrypi_ip_address>
+```
+to test the headless controll of you Raspberry
+
 
 ### Install pyOCD
 
-### Install
+Install pyocd via ssh login to the Pi5
+```
+     $ pip3 install pyocd
+```
+
 
 ## Setup Runner on Raspberry Pi5
 
