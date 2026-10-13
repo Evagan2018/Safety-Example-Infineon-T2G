@@ -1,43 +1,24 @@
-# SPDX-FileCopyrightText: Copyright 2022-2025 Arm Limited and/or its
-# affiliates <open-source-office@arm.com>
-# SPDX-License-Identifier: Apache-2.0
-#
-#  Licensed under the Apache License, Version 2.0 (the "License");
-#  you may not use this file except in compliance with the License.
-#  You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-#  Unless required by applicable law or agreed to in writing, software
-#  distributed under the License is distributed on an "AS IS" BASIS,
-#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-#  See the License for the specific language governing permissions and
-#  limitations under the License.
-
 name: Run CMSIS Driver Validation
-on:
-
-  workflow_dispatch:
-  
+'on':
+  workflow_dispatch: null
 jobs:
   CI:
-    runs-on: [self-hosted, rsp-p5-01]
-
+    runs-on:
+    - self-hosted
+    - rsp-p5-01
     steps:
     - name: Checkout repository
       uses: actions/checkout@v7
-
     - name: Download Build Artifact
       uses: dawidd6/action-download-artifact@v21
       with:
         workflow: Build_CMSIS_DV.yaml
         name: CMSIS_Driver_Validation@Release
         path: ./Test/artifact
-
     - name: Execute the CMSIS_Driver_Validation@Release
       working-directory: ./Test/artifact
-      run: | 
-         # Cortex-M4
-         # pyocd load --uid 171C089E02272400 --cbuild-run CMSIS_DV+T2G-Kit.cbuild-run.yml
-         # Cortex-M7
-         pyocd load --uid 0D18149E02272400 --cbuild-run CMSIS_DV+T2G-Kit.cbuild-run.yml
+      run: |
+        # Cortex-M4
+        # pyocd load --uid 171C089E02272400 --cbuild-run CMSIS_DV+T2G-Kit.cbuild-run.yml
+        # Cortex-M7
+        pyocd load --uid 0D18149E02272400 --cbuild-run CMSIS_DV+T2G-Kit.cbuild-run.yml

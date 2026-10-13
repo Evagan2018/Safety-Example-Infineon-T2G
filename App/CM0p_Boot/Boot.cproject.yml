@@ -3,7 +3,7 @@ project:
 
   # List of packs used in the project.
   packs:
-    - pack: ARM::CMSIS@^6.2.0
+    - pack: ARM::CMSIS@6.4.0
 
   # List of connections required or provided by the project.
   connections:
